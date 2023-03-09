@@ -1,5 +1,6 @@
 import React from "react";
 import { Component } from "react";
+import { nanoid } from 'nanoid'
 
 
  class Form extends Component{
@@ -7,6 +8,9 @@ state = {
     name: '',
     number: ''
 }
+
+name = nanoid();
+number = nanoid();
 
 handeleChange = e =>{
     const {name, value} = e.currentTarget
@@ -38,6 +42,7 @@ render() {
        <input
        type="text"
        name="name"
+       id={this.name}
        value={this.state.name}
        onChange={this.handeleChange}
        pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -47,6 +52,7 @@ render() {
          <input
        type="tel"
        name="number"
+       id={this.number}
        value={this.state.number}
        onChange={this.handeleChange}
        pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"

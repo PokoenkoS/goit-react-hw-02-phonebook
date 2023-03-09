@@ -1,6 +1,11 @@
 import React from "react";
 import { Component } from "react";
 
+import Form from "./Form";
+import ContactList from "./ContactList";
+
+
+
 export class App extends Component{
 
   state = {
@@ -8,32 +13,21 @@ export class App extends Component{
     name: ''
   }
 
+formSubmitHendler = data =>{
+  console.log(data);
+  this.state.contacts.push( data)
+  console.log(this.state.contacts);
+}
+
   render() {
+
     return (
       <div>
-      <input
-      type="text"
-      name="name"
-      pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-      title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-      required
-    />
-  
-      <div
-        style={{
-          height: '100vh',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          fontSize: 40,
-          color: '#010101'
-        }}
-      >
-       
-      </div>
-      </div>
-    );
+     <Form onSubmit ={this.formSubmitHendler}/>
+     <ContactList contacts={this.state.contacts}/>
+     </div>
+    )
   }
-
+}
   
-};
+

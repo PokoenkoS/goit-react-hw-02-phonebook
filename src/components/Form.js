@@ -1,10 +1,9 @@
 import React from "react";
 import { Component } from "react";
-// import ContactList from "./ContactList";
+
 
  class Form extends Component{
 state = {
-    
     name: '',
     number: ''
 }
@@ -12,13 +11,11 @@ state = {
 handeleChange = e =>{
     const {name, value} = e.currentTarget
     this.setState({[name]: value});
-    // this.state.contacts.push( [value])
-  };
+   };
 
   handeleSubmite = e =>{
     e.preventDefault();
     this.props.onSubmit(this.state);
-    // this.state.contacts.push( e.currentTarget.value)
     this.reset();
   }
 reset = ()=> {

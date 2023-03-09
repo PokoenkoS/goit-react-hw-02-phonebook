@@ -18,9 +18,8 @@ formSubmitHendler = data =>{
  
   console.log(this.state.contacts);
   const contact = {
-    id: nanoid,
-    name:'', 
-    number: ''
+    id: nanoid(),
+    ...data
   }
   this.setState(prevState => ({
     contacts:[contact, ...prevState.contacts]
@@ -34,13 +33,16 @@ changeFilter = e => {
 
 
   render() {
+    const normalizedFilter = this.state.filter.toLowerCase();
+
+    const visibleContact = this.state.contacts.filter(contact => contact.name.toLowerCase().includes(normalizedFilter) || contact.number.toLowerCase().includes(normalizedFilter));
 
     return (
       <div>
      <Form onSubmit ={this.formSubmitHendler}/>
      <h2>Contacts</h2>
      <Filter value={this.state.filter} onChange={this.changeFilter}/>
-     <ContactList contacts={this.state.contacts}/>
+     <ContactList contacts={visibleContact}/>
      </div>
     )
   }

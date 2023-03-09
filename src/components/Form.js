@@ -30,14 +30,7 @@ reset = ()=> {
 render() {
     return(
         <form onSubmit={this.handeleSubmite}
-        style={{
-         height: '100vh',
-         display: 'flex',
-         justifyContent: 'center',
-         alignItems: 'center',
-         fontSize: 40,
-         color: '#010101'
-       }}>
+        >
          <h2>Phonebook</h2>
        <input
        type="text"

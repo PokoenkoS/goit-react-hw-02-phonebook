@@ -14,17 +14,18 @@ color: #010101;`;
 export const FormDiv = styled.form`
 display: flex;
 flex-direction: column;
+justify-content: space-around;
 border: 3px solid black;
-width: 300px;
-height: 120px;
+width: 500px;
+height: 220px;
 
 `
 export const FormLabel = styled.label`
-width: 50px;
+width: 100px;
 padding-left: 10px;
 `
 export const Button = styled.button`
-width: 100px;
+width: 150px;
 padding-left: 10px;
 color: blue;
 margin-left: 10px;

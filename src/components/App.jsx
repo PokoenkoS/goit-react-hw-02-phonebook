@@ -17,32 +17,52 @@ formSubmitHendler = data =>{
   console.log(data);
  
   console.log(this.state.contacts);
+if (this.dublicateContact(data)) {
+  return alert (`${data.name}: ${data.number} already in contacts` )
+}
+
   const contact = {
     id: nanoid(),
     ...data
   }
+  
   this.setState(prevState => ({
+    
     contacts:[contact, ...prevState.contacts]
   }))
+}
+dublicateContact = data => {
+ return this.state.contacts.find(item => item.name ===data.name || item.number === data.number )
 }
 
 changeFilter = e => { 
   return  this.setState({filter: e.currentTarget.value})
 
+  
 };
+getFilterContact =()=> {
+  const normalizedFilter = this.state.filter.toLowerCase(); 
+  return this.state.contacts.filter(contact => contact.name.toLowerCase().includes(normalizedFilter) || contact.number.toLowerCase().includes(normalizedFilter));
+}
+
+deleteContact = (id) => {
+  this.setState(prevState=>({
+    contacts: prevState.contacts.filter(item=> item.id !== id)
+  }))
+}
 
 
   render() {
-    const normalizedFilter = this.state.filter.toLowerCase();
+    
 
-    const visibleContact = this.state.contacts.filter(contact => contact.name.toLowerCase().includes(normalizedFilter) || contact.number.toLowerCase().includes(normalizedFilter));
+    const visibleContact = this.getFilterContact();
 
     return (
       <div>
      <Form onSubmit ={this.formSubmitHendler}/>
      <h2>Contacts</h2>
      <Filter value={this.state.filter} onChange={this.changeFilter}/>
-     <ContactList contacts={visibleContact}/>
+     <ContactList contacts={visibleContact} onDeleteContact={this.deleteContact}/>
      </div>
     )
   }

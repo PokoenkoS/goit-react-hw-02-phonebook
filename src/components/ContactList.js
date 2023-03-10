@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types'
 
 const ContactList =({contacts, onDeleteContact})=> {
 return(
@@ -19,5 +20,9 @@ return(
   </div> 
 )
 };
+ContactList.prototype = {
+  
+    contacts: PropTypes.array,
+}
 
 export default ContactList;

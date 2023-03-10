@@ -1,6 +1,8 @@
 import React from "react";
 import { Component } from "react";
 import { nanoid } from 'nanoid'
+import { Button, FormDiv, FormLabel } from "./Main.styled";
+
 
 
  class Form extends Component{
@@ -29,9 +31,9 @@ reset = ()=> {
 
 render() {
     return(
-        <form onSubmit={this.handeleSubmite}
+        <FormDiv onSubmit={this.handeleSubmite}
         >
-         <h2>Phonebook</h2>
+        <FormLabel>Name
        <input
        type="text"
        name="name"
@@ -41,7 +43,9 @@ render() {
        pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
        title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
        required
-     />
+     /> 
+     </FormLabel>
+     <FormLabel> Number
          <input
        type="tel"
        name="number"
@@ -51,12 +55,14 @@ render() {
        pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
        title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
        required
-       />
-     <button type="submit">Add contact</button>  
+       /></FormLabel>
+     <Button type="submit">Add contact</Button>  
       
-       </form>
+       </FormDiv>
        
     
 )
 }}
+
+
 export default Form;

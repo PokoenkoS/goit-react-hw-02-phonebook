@@ -6,8 +6,6 @@ import ContactList from "./ContactList";
 import Filter from "./Filter";
 import { MainDiv } from "./Main.styled";
 
-
-
 export class App extends Component{
 
   state = {
@@ -20,14 +18,12 @@ formSubmitHendler = data =>{
 if (this.dublicateContact(data)) {
   return alert (`${data.name}: ${data.number} already in contacts` )
 }
-
   const contact = {
     id: nanoid(),
     ...data
   }
   
   this.setState(prevState => ({
-    
     contacts:[contact, ...prevState.contacts]
   }))
 }

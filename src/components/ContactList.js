@@ -7,22 +7,18 @@ return(
     
     <ul>
     {contacts.map((contact) =>{return (
-    <li key={contact.id}>{contact.name}:{contact.number}
+    <li key={contact.id}>
+    {contact.name}:{contact.number}
     <button type="submit" onClick={()=>onDeleteContact(contact.id)}> Delete</button>
     </li>
-             )
-    }
-       
-            
-        
-    )}
+    )
+    })}
     </ul>
   </div> 
 )
 };
 ContactList.prototype = {
-  
-    contacts: PropTypes.array,
+  contacts: PropTypes.array,
 }
 
 export default ContactList;
